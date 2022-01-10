@@ -42,7 +42,6 @@ services:
         ports: 
             - "8080:80"
 
-# Adicionado o bloco de rede para comunicação entre as aplicações.     
 networks:
   node-network:
     driver: bridge
