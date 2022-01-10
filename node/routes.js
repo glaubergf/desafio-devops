@@ -14,10 +14,10 @@ routes.get('/', (_, res) => {
 
         results.forEach(element => {
             html += element.name + '<br>'
-        })
+        });
 
         return res.send(html);
     });
-})
+});
 
 module.exports = routes;
