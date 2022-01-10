@@ -52,15 +52,13 @@ No *Dockerfile* do node, foi editado a 1ª linha **COPY** para copiar apenas os 
 COPY package*.json ./
 ```
 
-Após o RUN que faz o downlaod do dockerize, foi acrescentado o **COPY** para  copiar todo conteúdo do diretório raiz onde esta o Dockerfile para o diretório de trabalho *(/usr/src/app)* do container. Em seguida foi acrescentado outro **RUN** para execução do *npm install*.
+Após o RUN que faz o downlaod do dockerize, foi acrescentado o **COPY** para copiar todo conteúdo do diretório raiz onde esta o Dockerfile para o diretório de trabalho *(/usr/src/app)* do container. Em seguida foi acrescentado outro **RUN** para execução do *npm install*.
 
 ```
 COPY . .
 
 RUN npm install
 ```
-
-EXPOSE 3000
 
 Finalizando o *Dockerfile*, foi acrescentado o **CMD** para executar os comandos *npm run start* no início da execução do container.
 
@@ -74,11 +72,11 @@ CMD ["npm","run","start"]
 
 No arquivo *connectionDb.js* foi editado apenas o nome da base de dados: de *nodedb* para **node_db**.
 
-No arquivo *index.js* foi acrescentado o separador de declarações '**;**' em cada linha declarada onde não tinha a mesma.
+No arquivo *index.js* foi acrescentado o separador de declarações " **;** " no final de cada linha declarada onde não tinha a mesma.
 
-No arquivo *routes.js* foi acrescentado o ; nas **linhas 17** e **21**.
+No arquivo *routes.js* foi acrescentado o " **;** "  no final das linhas **17** e **21**.
 
-**Nota**: *JavaScript é uma linguagem que faz declarações ao navegador. O carácter utilizado para separar essas declarações é ; e o mesmo deve ser sempre utilizado.*
+**Nota**: *JavaScript é uma linguagem que faz declarações ao navegador. O carácter utilizado para separar essas declarações é " **;** " e o mesmo deve ser sempre utilizado.*
 
 Já no *docker-compose.yaml* foi necessário acrescentar o bloco **networks** para criar a interface de rede de comunicação entre os containers.
 
@@ -88,7 +86,7 @@ networks:
     driver: bridge
 ```
 
-Após todos as alterações feitas, para testar a execução pelo próprio console, execute o comando **curl** com o loop **for** numa sequência de **2 vezes** gravando no arquivo chamado *desafiodevops.txt*.
+Após todos as alterações feitas, para testar a execução pelo próprio console, execute o comando **curl** com o loop **for** numa sequência de **2 vezes** ou mais, gravando assim no arquivo de saída chamado *desafiodevops.txt*.
 
 ```
 for i in $(seq 2); do $(curl http://localhost:3000/ > desafiodevops.txt); done; ls desafiodevops.txt; cat desafiodevops.txt
